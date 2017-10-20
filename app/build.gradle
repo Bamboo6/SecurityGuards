@@ -1,23 +1,23 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'//说明module的类型，com.android.application为应用程序，com.android.library为库
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
-    defaultConfig {
-        applicationId "com.lt.android.securityguards"
-        minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    compileSdkVersion 26 //编译的SDK版本。编译该app时候，你想使用到的api版本。
+    buildToolsVersion "26.0.1" //构建工具的版本号。
+    defaultConfig { //defaultConfig方法包含了该app的核心属性，该属性会重写在AndroidManifest.xml中的对应属性。
+        applicationId "com.lt.android.securityguards" //应用程序的包名
+        minSdkVersion 19 //支持的最低版本
+        targetSdkVersion 26 //支持的目标版本
+        versionCode 1 //版本号
+        versionName "1.0" //版本名
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner" //AndroidJUnitRunner类是一个JUnit测试运行器,允许运行JUnit 3或JUnit 4测试类在Android设备上,包括那些使用Espresso和UI Automator框架。
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    buildTypes { //build类型
+        release { //发布
+            minifyEnabled false //关闭混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' //指定混淆规则文件
         }
     }
-    packagingOptions{
+    packagingOptions{ //设置APK包的相关属性
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
@@ -32,11 +32,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    compile files('libs/commons-codec-1.9.jar')
+    compile files('libs/httpclient-4.5.2.jar')
+    compile files('libs/httpcore-4.4.4.jar')
 }
