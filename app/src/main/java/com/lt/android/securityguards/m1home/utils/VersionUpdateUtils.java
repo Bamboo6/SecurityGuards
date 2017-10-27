@@ -16,8 +16,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
 //test
 
+=======
+>>>>>>> ff867b4c5125e529c002d39676d6af6d869276e1
 /**
  * Created by lt on 2017/10/20.
  */
